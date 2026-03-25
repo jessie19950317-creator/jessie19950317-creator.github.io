@@ -9,10 +9,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { height: 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #fff; color: #000; scroll-behavior: smooth; }
 
-        /* 顶部导航 (Zara风格悬浮) */
-        header { position: fixed; top: 0; width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: #fff; }
-        .logo { font-size: 28px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; }
-        .menu-btn { font-size: 13px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
+        /* 顶部导航 (Zara左上角悬浮风格) */
+        header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 40px; display: flex; justify-content: space-between; align-items: flex-start; z-index: 100; mix-blend-mode: difference; color: #fff; pointer-events: none; }
+        .logo { font-size: 36px; font-weight: 700; letter-spacing: 6px; text-transform: uppercase; pointer-events: auto; }
+        .menu-btn { font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; pointer-events: auto; margin-top: 10px; }
 
         /* 全屏图片区块 */
         .section { height: 100vh; width: 100%; position: relative; display: flex; justify-content: center; align-items: center; text-align: center; }
@@ -33,12 +33,12 @@
         /* 关于我 (极简白底黑字) */
         .about-section { min-height: 100vh; background: #fff; color: #000; padding: 120px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .about-content { max-width: 800px; line-height: 2; text-align: left; }
-        .about-content h2 { font-size: 2.5rem; margin-bottom: 50px; text-align: center; letter-spacing: 6px; text-transform: uppercase; font-weight: 400; }
-        .about-content h3 { font-size: 1.1rem; margin-top: 40px; margin-bottom: 15px; font-weight: 600; letter-spacing: 1px; }
-        .about-content p { margin-bottom: 20px; font-size: 0.95rem; color: #333; }
+        .about-content h2 { font-size: 2.5rem; margin-bottom: 60px; text-align: center; letter-spacing: 6px; text-transform: uppercase; font-weight: 400; }
+        .about-content h3 { font-size: 1.1rem; margin-top: 45px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #111; }
+        .about-content p { margin-bottom: 20px; font-size: 0.95rem; color: #444; text-align: justify; }
         
         /* 标签排版 */
-        .tags { margin-top: 60px; text-align: center; }
+        .tags { margin-top: 70px; text-align: center; }
         .tags span { display: inline-block; border: 1px solid #111; padding: 8px 20px; margin: 8px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
 
         /* 移动端适配 */
@@ -46,15 +46,16 @@
             h1 { font-size: 2.2rem; letter-spacing: 6px; }
             header { padding: 20px; }
             .logo { font-size: 20px; }
+            .about-content h3 { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="menu-btn">Menu</div>
         <div class="logo">JESSIE</div>
-        <div class="menu-btn" style="visibility: hidden;">Menu</div> </header>
+        <div class="menu-btn">MENU</div>
+    </header>
 
     <div class="section">
         <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop" alt="Hero Background">
@@ -96,13 +97,15 @@
     <div class="about-section" id="about">
         <div class="about-content">
             <h2>About</h2>
-            <p>拥有湖北美术学院科班背景与 6 年以上资深商业摄影经验，曾为中国李宁、安踏儿童等一线品牌提供视觉统筹与拍摄服务。深谙光影结构、材质表现与商业视觉传达的底层逻辑。</p>
             
-            <h3>从镜头到算法的视觉进化</h3>
-            <p>现深耕出海与跨境领域，全面拥抱 AIGC 生产力引擎。作为增长中心视觉负责人，致力于以纯 AI 工具流支持全球视频与图像内容的全面产出，推动前沿 AI 工具在企业内部的深度应用与商业化落地。</p>
+            <h3>美学沉淀 | The Foundation</h3>
+            <p>8 年资深商业摄影沉淀，美院科班底蕴。曾执掌中国李宁、安奈儿、HICCPET 等一线品牌视觉统筹。从光影结构的精准控制到材质纹理的极度还原，深谙商业视觉传达的底层逻辑。</p>
             
-            <h3>核心优势</h3>
-            <p>不只是写 Prompt，而是将传统的顶级摄影打光、先锋镜头语言与商业策划需求完美转译给 AI，实现降维打击般的极高品质商业级出图。</p>
+            <h3>视觉进化 | Lens to Algorithm</h3>
+            <p>现深耕全球出海赛道，作为增长中心视觉负责人，全面拥抱 AIGC 生产力引擎。以纯粹的 AI 工具流驱动全球视频与图像矩阵产出，打通前沿技术到企业级商业落地的终极闭环。</p>
+            
+            <h3>核心优势 | Core Competence</h3>
+            <p>拒绝盲目的参数堆砌。将先锋镜头语言与品牌商业诉求，精准转译为 AI 视觉指令，实现商业级质感出图。</p>
             
             <div class="tags">
                 <span>Art Direction</span>
