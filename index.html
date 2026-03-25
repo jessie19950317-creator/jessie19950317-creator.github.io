@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JESSIE | AI 视觉专家</title>
+    <style>
+        /* 基础重置 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #fff; color: #000; scroll-behavior: smooth; }
+
+        /* 顶部导航 (Zara风格悬浮) */
+        header { position: fixed; top: 0; width: 100%; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; color: #fff; }
+        .logo { font-size: 28px; font-weight: 700; letter-spacing: 5px; text-transform: uppercase; }
+        .menu-btn { font-size: 13px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
+
+        /* 全屏图片区块 */
+        .section { height: 100vh; width: 100%; position: relative; display: flex; justify-content: center; align-items: center; text-align: center; }
+        .section img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        
+        /* 压暗图层，确保白色文字清晰可见 */
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); z-index: 0; }
+
+        /* 版块内的文字样式 */
+        .content { position: relative; z-index: 1; color: #fff; padding: 20px; }
+        h1 { font-size: 3.5rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 15px; font-weight: 300; }
+        p.subtitle { font-size: 1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; font-weight: 300; }
+        
+        /* 探索按钮 */
+        .btn { display: inline-block; padding: 14px 32px; border: 1px solid #fff; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; transition: all 0.4s ease; backdrop-filter: blur(5px); }
+        .btn:hover { background: #fff; color: #000; }
+
+        /* 关于我 (极简白底黑字) */
+        .about-section { min-height: 100vh; background: #fff; color: #000; padding: 120px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .about-content { max-width: 800px; line-height: 2; text-align: left; }
+        .about-content h2 { font-size: 2.5rem; margin-bottom: 50px; text-align: center; letter-spacing: 6px; text-transform: uppercase; font-weight: 400; }
+        .about-content h3 { font-size: 1.1rem; margin-top: 40px; margin-bottom: 15px; font-weight: 600; letter-spacing: 1px; }
+        .about-content p { margin-bottom: 20px; font-size: 0.95rem; color: #333; }
+        
+        /* 标签排版 */
+        .tags { margin-top: 60px; text-align: center; }
+        .tags span { display: inline-block; border: 1px solid #111; padding: 8px 20px; margin: 8px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; letter-spacing: 6px; }
+            header { padding: 20px; }
+            .logo { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="menu-btn">Menu</div>
+        <div class="logo">JESSIE</div>
+        <div class="menu-btn" style="visibility: hidden;">Menu</div> </header>
+
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop" alt="Hero Background">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>AI Visual</h1>
+            <p class="subtitle">Photography & Generative Art</p>
+            <a href="#about" class="btn">Discover</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1962&auto=format&fit=crop" alt="Fashion">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>独立时尚</h1>
+            <p class="subtitle">Fashion & Lookbook</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=2000&auto=format&fit=crop" alt="Beauty">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>极致美妆</h1>
+            <p class="subtitle">Beauty & Skincare</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=2000&auto=format&fit=crop" alt="Pets">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>全球化宠物视觉</h1>
+            <p class="subtitle">Pet Creative Content</p>
+        </div>
+    </div>
+
+    <div class="about-section" id="about">
+        <div class="about-content">
+            <h2>About</h2>
+            <p>拥有湖北美术学院科班背景与 6 年以上资深商业摄影经验，曾为中国李宁、安踏儿童等一线品牌提供视觉统筹与拍摄服务。深谙光影结构、材质表现与商业视觉传达的底层逻辑。</p>
+            
+            <h3>从镜头到算法的视觉进化</h3>
+            <p>现深耕出海与跨境领域，全面拥抱 AIGC 生产力引擎。作为增长中心视觉负责人，致力于以纯 AI 工具流支持全球视频与图像内容的全面产出，推动前沿 AI 工具在企业内部的深度应用与商业化落地。</p>
+            
+            <h3>核心优势</h3>
+            <p>不只是写 Prompt，而是将传统的顶级摄影打光、先锋镜头语言与商业策划需求完美转译给 AI，实现降维打击般的极高品质商业级出图。</p>
+            
+            <div class="tags">
+                <span>Art Direction</span>
+                <span>AI Prompting</span>
+                <span>Global Content</span>
+                <span>Photography</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
