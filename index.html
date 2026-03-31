@@ -3,118 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JESSIE | AI 视觉专家</title>
+    <title>JESSIE | AI Visual & Art Direction</title>
     <style>
-        /* 基础重置 */
+        /* 引入奢华品牌常用的 Google 字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+        /* 基础重置与温润背景 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { height: 100%; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #fff; color: #000; scroll-behavior: smooth; }
+        body, html { 
+            font-family: 'Jost', sans-serif; 
+            background-color: #FDFBF9; /* 法式奢华品牌常用的温暖珍珠白底色 */
+            color: #2C2B29; /* 柔和的深炭灰色，比纯黑更优雅，阅读更舒适 */
+            scroll-behavior: smooth; 
+        }
 
-        /* 顶部导航 (Zara左上角悬浮风格) */
-        header { position: fixed; top: 0; left: 0; width: 100%; padding: 30px 40px; display: flex; justify-content: space-between; align-items: flex-start; z-index: 100; mix-blend-mode: difference; color: #fff; pointer-events: none; }
-        .logo { font-size: 36px; font-weight: 700; letter-spacing: 6px; text-transform: uppercase; pointer-events: auto; }
-        .menu-btn { font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; pointer-events: auto; margin-top: 10px; }
+        /* 顶部导航：经典居中对齐、清透留白 */
+        header { 
+            position: fixed; top: 0; width: 100%; padding: 25px 50px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            z-index: 100; background-color: rgba(253, 251, 249, 0.95); 
+            border-bottom: 1px solid #EBE7E0; /* 极细的温和分割线 */
+        }
+        .header-item { flex: 1; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; color: #555; }
+        .header-item.right { text-align: right; }
+        .logo { 
+            flex: 1; text-align: center; font-family: 'Playfair Display', serif; 
+            font-size: 26px; font-weight: 500; letter-spacing: 6px; text-transform: uppercase; color: #111;
+        }
 
-        /* 全屏图片区块 */
-        .section { height: 100vh; width: 100%; position: relative; display: flex; justify-content: center; align-items: center; text-align: center; }
-        .section img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        /* 首屏主视觉：去除厚重压暗，保留图片呼吸感 */
+        .hero { 
+            width: 100%; margin-top: 100px; padding: 0 40px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+        }
+        .hero img { 
+            width: 100%; height: 75vh; object-fit: cover; 
+            border-radius: 2px; /* 极其微弱的圆角，褪去数码感，增加温润感 */
+        }
+        .hero-text { margin-top: 40px; text-align: center; margin-bottom: 60px; }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; letter-spacing: 2px; margin-bottom: 12px; }
+        .hero-text p { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #888; }
+
+        /* 内容板块：Lookbook 风格排版 */
+        .lookbook-section { padding: 60px 40px 100px 40px; text-align: center; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 60px; letter-spacing: 2px; color: #111; }
         
-        /* 压暗图层，确保白色文字清晰可见 */
-        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.25); z-index: 0; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .grid-item { text-align: center; cursor: pointer; transition: opacity 0.3s ease; }
+        .grid-item:hover { opacity: 0.8; }
+        .grid-item img { width: 100%; height: 600px; object-fit: cover; margin-bottom: 25px; border-radius: 2px; }
+        .grid-item h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 500; margin-bottom: 10px; color: #222; }
+        .grid-item p { font-size: 13px; color: #777; letter-spacing: 1px; text-transform: uppercase; }
 
-        /* 版块内的文字样式 */
-        .content { position: relative; z-index: 1; color: #fff; padding: 20px; }
-        h1 { font-size: 3.5rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 15px; font-weight: 300; }
-        p.subtitle { font-size: 1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; font-weight: 300; }
+        /* 关于我：如同品牌主理人的信笺 */
+        .about-section { 
+            background-color: #F4F1EA; /* 略微深一点的燕麦色，自然区分版块 */
+            padding: 120px 20px; display: flex; flex-direction: column; align-items: center; 
+        }
+        .about-content { max-width: 680px; text-align: center; }
+        .about-content h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 60px; font-weight: 400; letter-spacing: 4px; }
         
-        /* 探索按钮 */
-        .btn { display: inline-block; padding: 14px 32px; border: 1px solid #fff; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; transition: all 0.4s ease; backdrop-filter: blur(5px); }
-        .btn:hover { background: #fff; color: #000; }
+        .about-text-block { margin-bottom: 50px; text-align: center; }
+        .about-text-block h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 20px; font-weight: 600; letter-spacing: 2px; color: #111; text-transform: uppercase;}
+        .about-text-block p { font-size: 15px; color: #444; line-height: 2.2; text-align: justify; text-align-last: center; }
+        
+        /* 标签排版：极简线条框 */
+        .tags { margin-top: 40px; text-align: center; }
+        .tags span { display: inline-block; border: 1px solid #C7C2B6; padding: 10px 28px; margin: 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: #555; background-color: transparent; }
 
-        /* 关于我 (极简白底黑字) */
-        .about-section { min-height: 100vh; background: #fff; color: #000; padding: 120px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .about-content { max-width: 800px; line-height: 2; text-align: left; }
-        .about-content h2 { font-size: 2.5rem; margin-bottom: 60px; text-align: center; letter-spacing: 6px; text-transform: uppercase; font-weight: 400; }
-        .about-content h3 { font-size: 1.1rem; margin-top: 45px; margin-bottom: 15px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #111; }
-        .about-content p { margin-bottom: 20px; font-size: 0.95rem; color: #444; text-align: justify; }
-        
-        /* 标签排版 */
-        .tags { margin-top: 70px; text-align: center; }
-        .tags span { display: inline-block; border: 1px solid #111; padding: 8px 20px; margin: 8px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
+        /* 页脚 */
+        footer { text-align: center; padding: 60px 20px; font-size: 12px; color: #999; letter-spacing: 2px; text-transform: uppercase; border-top: 1px solid #EBE7E0;}
 
         /* 移动端适配 */
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: 1fr; }
+            .grid-item img { height: 450px; }
+        }
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; letter-spacing: 6px; }
-            header { padding: 20px; }
-            .logo { font-size: 20px; }
-            .about-content h3 { font-size: 1rem; }
+            .header-item { display: none; }
+            header { justify-content: center; padding: 20px; }
+            .hero { padding: 0 20px; margin-top: 80px; }
+            .hero img { height: 60vh; }
+            .about-text-block p { text-align: left; text-align-last: left; }
         }
     </style>
 </head>
 <body>
 
     <header>
+        <div class="header-item">Works</div>
         <div class="logo">JESSIE</div>
-        <div class="menu-btn">MENU</div>
+        <div class="header-item right">About</div>
     </header>
 
-    <div class="section">
-        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop" alt="Hero Background">
-        <div class="overlay"></div>
-        <div class="content">
-            <h1>AI Visual</h1>
-            <p class="subtitle">Photography & Generative Art</p>
-            <a href="#about" class="btn">Discover</a>
+    <div class="hero">
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=2000&auto=format&fit=crop" alt="Hero Background">
+        <div class="hero-text">
+            <h1>Global Pet Creative Content</h1>
+            <p>AI Photography & Visual Direction</p>
         </div>
     </div>
 
-    <div class="section">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1962&auto=format&fit=crop" alt="Fashion">
-        <div class="overlay"></div>
-        <div class="content">
-            <h1>独立时尚</h1>
-            <p class="subtitle">Fashion & Lookbook</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=2000&auto=format&fit=crop" alt="Beauty">
-        <div class="overlay"></div>
-        <div class="content">
-            <h1>极致美妆</h1>
-            <p class="subtitle">Beauty & Skincare</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=2000&auto=format&fit=crop" alt="Pets">
-        <div class="overlay"></div>
-        <div class="content">
-            <h1>全球化宠物视觉</h1>
-            <p class="subtitle">Pet Creative Content</p>
+    <div class="lookbook-section">
+        <h2 class="section-title">Discover The Visuals</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1962&auto=format&fit=crop" alt="Fashion">
+                <h3>独立时尚</h3>
+                <p>Fashion & Lookbook</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=2000&auto=format&fit=crop" alt="Beauty">
+                <h3>AI创作</h3>
+                <p>Beauty & Skincare</p>
+            </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=2000&auto=format&fit=crop" alt="Pets">
+                <h3>宠物美学</h3>
+                <p>High-end Pet Care</p>
+            </div>
         </div>
     </div>
 
     <div class="about-section" id="about">
         <div class="about-content">
-            <h2>About</h2>
+            <h2>The Foundation</h2>
             
-            <h3>美学沉淀 | The Foundation</h3>
-            <p>8 年资深商业摄影沉淀，美院科班底蕴。曾执掌中国李宁、安奈儿、HICCPET 等一线品牌视觉统筹。从光影结构的精准控制到材质纹理的极度还原，深谙商业视觉传达的底层逻辑。</p>
+            <div class="about-text-block">
+                <h3>美学沉淀</h3>
+                <p>8 年资深商业摄影沉淀，美院科班底蕴。曾执掌中国李宁、安奈儿、HICCPET 等品牌视觉统筹。从光影结构的精准控制到材质纹理的极度还原，深谙商业视觉传达的底层逻辑。</p>
+            </div>
             
-            <h3>视觉进化 | Lens to Algorithm</h3>
-            <p>现深耕全球出海赛道，作为增长中心视觉负责人，全面拥抱 AIGC 生产力引擎。以纯粹的 AI 工具流驱动全球视频与图像矩阵产出，打通前沿技术到企业级商业落地的终极闭环。</p>
+            <div class="about-text-block">
+                <h3>视觉进化 | Lens to Algorithm</h3>
+                <p>现深耕全球出海赛道，作为增长中心视觉负责人，全面拥抱 AIGC 生产力引擎。以纯粹的 AI 工具流驱动全球视频与图像矩阵产出，打通前沿技术到企业级商业落地的终极闭环。</p>
+            </div>
             
-            <h3>核心优势 | Core Competence</h3>
-            <p>拒绝盲目的参数堆砌。将先锋镜头语言与品牌商业诉求，精准转译为 AI 视觉指令，实现商业级质感出图。</p>
+            <div class="about-text-block">
+                <h3>核心优势 | Core Competence</h3>
+                <p>拒绝盲目的参数堆砌。将先锋镜头语言与品牌商业诉求，精准转译为 AI 视觉指令，实现商业级质感出图。</p>
+            </div>
             
             <div class="tags">
                 <span>Art Direction</span>
                 <span>AI Prompting</span>
                 <span>Global Content</span>
-                <span>Photography</span>
             </div>
         </div>
     </div>
+
+    <footer>
+        © 2026 JESSIE. All rights reserved.
+    </footer>
 
 </body>
 </html>
