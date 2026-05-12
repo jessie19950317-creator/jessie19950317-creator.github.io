@@ -3,135 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JESSIE | AI Visual & Art Direction</title>
+    <title>JESSIE | AI Visual Director Portfolio</title>
     <style>
-        /* 引入奢华品牌常用的 Google 字体 */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&display=swap');
 
-        /* 基础重置 */
+        /* 全局基础重置 */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { 
-            height: 100%; 
-            font-family: 'Jost', sans-serif; 
-            background-color: #FDFBF9; /* 珍珠白底色 */
-            color: #2C2B29; /* 优雅的深炭灰色 */
-            overflow: hidden; /* 锁定整屏，不允许页面上下滚动，实现全屏沉浸感 */
-        }
+        body { font-family: 'Inter', sans-serif; color: #111; overflow-x: hidden; }
+        img { width: 100%; display: block; object-fit: cover; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        .btn { display: inline-block; padding: 10px 40px; border: 1px solid #111; text-decoration: none; color: #111; text-transform: uppercase; font-size: 12px; letter-spacing: 1px; }
 
-        /* --- 全屏视频背景与奶油色蒙版 --- */
-        .video-container {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2;
-        }
-        .video-container video {
-            width: 100%; height: 100%;
-            object-fit: cover; /* 保证视频铺满全屏不变形 */
-        }
-        .overlay-mask {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            /* 燕麦奶油色渐变蒙版，透明度设置为0.88，既透出视频动态，又保证文字清晰 */
-            background: linear-gradient(to bottom, rgba(253, 251, 249, 0.95) 0%, rgba(244, 241, 234, 0.85) 100%);
-            z-index: -1;
-            backdrop-filter: blur(8px); /* 微微的毛玻璃效果，增加高级感 */
-        }
+        /* =========================================
+           Section 1: Zara 表单排版风格 (左表单 右大图)
+           ========================================= */
+        .sec-1 { display: flex; height: 100vh; background: #fff; align-items: center; }
+        .sec-1-left { width: 35%; padding: 10%; display: flex; flex-direction: column; justify-content: center; }
+        .sec-1-logo { font-size: 5rem; font-weight: 700; letter-spacing: -2px; margin-bottom: 60px; font-family: 'Playfair Display', serif; }
+        .form-group { margin-bottom: 30px; font-size: 12px; }
+        .form-label { color: #888; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; font-size: 10px; }
+        .form-select { border-bottom: 1px solid #111; padding-bottom: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .sec-1-right { width: 65%; height: 85vh; padding-right: 5%; }
+        .sec-1-right img { height: 100%; }
 
-        /* --- 顶部导航 (胶囊形状) --- */
-        .top-bar {
-            position: absolute;
-            top: 40px; width: 100%;
-            display: flex; justify-content: center;
-            z-index: 10;
-        }
-        .nav-pill {
-            background-color: rgba(255, 255, 255, 0.6);
-            border: 1px solid #EBE7E0;
-            padding: 8px 24px;
-            border-radius: 50px;
-            display: flex; align-items: center; gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            backdrop-filter: blur(10px);
-        }
-        .nav-pill .status-dot {
-            width: 8px; height: 8px; background-color: #8B9D83; /* 优雅的灰绿色圆点 */
-            border-radius: 50%;
-        }
-        .nav-pill span {
-            font-size: 13px; letter-spacing: 1px; text-transform: uppercase; font-weight: 500;
-        }
+        /* =========================================
+           Section 2: Vivian Maier 侧边栏画廊风格
+           ========================================= */
+        .sec-2 { display: flex; min-height: 100vh; background: #fff; }
+        .sec-2-sidebar { width: 250px; background: #8e7f6d; color: #e8e4dc; padding: 60px 30px; display: flex; flex-direction: column; }
+        .sec-2-sidebar h2 { font-size: 2rem; margin-bottom: 50px; letter-spacing: 1px; color: #fff;}
+        .sec-2-nav { list-style: none; font-size: 11px; letter-spacing: 2px; line-height: 2.5; text-transform: uppercase; flex-grow: 1; }
+        .sec-2-grid { flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); }
+        .sec-2-grid img { height: 350px; filter: grayscale(100%); transition: filter 0.5s; }
+        .sec-2-grid img:hover { filter: grayscale(0%); }
 
-        /* --- 居中个人介绍区域 --- */
-        .center-content {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -60%); /* 稍微偏上一点，给底部留空间 */
-            width: 90%; max-width: 900px;
-            text-align: center;
-            z-index: 10;
-        }
-        .greeting {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem; font-style: italic; font-weight: 400;
-            margin-bottom: 40px; letter-spacing: 2px;
-        }
+        /* =========================================
+           Section 3: Teeth 杂志留白风格
+           ========================================= */
+        .sec-3 { display: flex; height: 100vh; background: #fff; border-top: 1px solid #eee; }
+        .sec-3-left { width: 50%; padding: 10%; display: flex; flex-direction: column; justify-content: center; }
+        .sec-3-left h2 { font-size: 3.5rem; font-weight: 400; margin-bottom: 10px; }
+        .sec-3-left p.sub { font-size: 14px; font-style: italic; color: #555; margin-bottom: 40px; }
+        .sec-3-credits { font-size: 10px; line-height: 1.8; text-transform: uppercase; color: #666; letter-spacing: 0.5px; }
+        .sec-3-right { width: 50%; height: 100%; padding: 40px 40px 40px 0; }
+        .sec-3-right img { height: 100%; border-radius: 2px; }
+
+        /* =========================================
+           Section 4: Zara 巨型字体穿插风格
+           ========================================= */
+        .sec-4 { position: relative; height: 100vh; display: flex; background: #fff; overflow: hidden; padding: 60px 40px; gap: 20px;}
+        .sec-4-img { width: 50%; height: 100%; object-fit: cover; }
+        .sec-4-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 22vw; font-family: 'Playfair Display', serif; font-weight: 700; color: #111; z-index: 10; pointer-events: none; letter-spacing: -0.06em; mix-blend-mode: overlay; opacity: 0.9;}
+
+        /* =========================================
+           Section 5: Kinfolk 4栏列表风格
+           ========================================= */
+        .sec-5 { padding: 100px 5%; background: #fff; border-top: 2px solid #111;}
+        .kinfolk-header { font-size: 2.5rem; margin-bottom: 60px; font-weight: 400; letter-spacing: 1px; padding-bottom: 20px; border-bottom: 1px solid #111; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .card img { height: 400px; margin-bottom: 20px; }
+        .card-meta { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #777; margin-bottom: 10px; }
+        .card-title { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 500; }
+        .card-desc { font-size: 13px; color: #444; line-height: 1.6; }
+
+        /* =========================================
+           Section 6: Kinfolk 4栏网格变体
+           ========================================= */
+        .sec-6 { padding: 60px 5% 100px 5%; background: #fff; }
         
-        /* 履历排版：三列并排展示，更加紧凑高级 */
-        .intro-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            text-align: left;
-        }
-        .intro-block h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem; margin-bottom: 15px; font-weight: 600; 
-            letter-spacing: 2px; text-transform: uppercase;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding-bottom: 10px;
-        }
-        .intro-block p {
-            font-size: 14px; line-height: 1.8; color: #555; text-align: justify;
-        }
-
-        /* --- 底部画廊缩略图 (参考图1) --- */
-        .bottom-gallery {
-            position: absolute;
-            bottom: 40px; left: 50%;
-            transform: translateX(-50%);
-            width: 90%; max-width: 1200px;
-            display: flex; justify-content: center; gap: 15px;
-            z-index: 10;
-            overflow-x: auto;
-            padding-bottom: 10px;
-        }
-        /* 隐藏滚动条但保留滚动功能 */
-        .bottom-gallery::-webkit-scrollbar { display: none; } 
+        /* =========================================
+           Section 7: Kinfolk 鼠尾草绿底色 + 底部Footer
+           ========================================= */
+        .sec-7 { padding: 100px 10%; background: #e6e7e2; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 40px;}
+        .grid-3 .card img { height: 500px; }
         
-        .gallery-item {
-            width: 100px; height: 100px;
-            flex-shrink: 0;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
-            border: 2px solid transparent;
-        }
-        .gallery-item img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-        .gallery-item:hover {
-            transform: translateY(-8px);
-            border: 2px solid #fff;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
+        footer { background: #080808; color: #fff; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+        .footer-links span { margin-left: 20px; cursor: pointer; }
 
-        /* --- 移动端适配 --- */
+        /* 简单响应式 */
         @media (max-width: 900px) {
-            .intro-grid { grid-template-columns: 1fr; gap: 20px; }
-            .center-content { transform: translate(-50%, -50%); top: 45%; max-height: 60vh; overflow
+            .sec-1, .sec-3 { flex-direction: column; height: auto; padding: 50px 20px; }
+            .sec-1-left, .sec-1-right, .sec-3-left, .sec-3-right { width: 100%; padding: 0; }
+            .sec-2 { flex-direction: column; }
+            .sec-2-sidebar { width: 100%; padding: 30px; }
+            .sec-2-grid, .grid-4, .grid-3 { grid-template-columns: 1fr 1fr; }
+            .sec-4-text { font-size: 30vw; }
+        }
+        @media (max-width: 600px) {
+            .sec-2-grid, .grid-4, .grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="sec-1">
+        <div class="sec-1-left">
+            <div class="sec-1-logo">JESSIE</div>
+            <div class="form-group">
+                <div class="form-label">位置 / Location</div>
+                <div class="form-select"><span>Global Market</span> <span>⌄</span></div>
+            </div>
+            <div class="form-group">
+                <div class="form-label">视觉专长 / Expertise</div>
+                <div class="form-select"><span>AI Photography</span> <span>⌄</span></div>
+            </div>
+            <br>
+            <a href="#sec-2" class="btn">继续 / Continue</a>
+        </div>
+        <div class="sec-1-right">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1962&auto=format&fit=crop" alt="Fashion Cover">
+        </div>
+    </section>
+
+    <section class="sec-2" id="sec-2">
+        <div class="sec-2-sidebar">
+            <h2>J. Studio</h2>
+            <ul class="sec-2-nav">
+                <li>Portfolios ></li>
+                <li>Beauty ></li>
+                <li>Fashion ></li>
+                <li>Pet Care ></li>
+                <li>About ></li>
+            </ul>
+            <div style="font-size: 10px; margin-top: auto;">© 2026 Jessie Art Collab.</div>
+        </div>
+        <div class="sec-2-grid">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop" alt="B&W">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop" alt="B&W">
+            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=800&auto=format&fit=crop" alt="B&W">
+            <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=800&auto=format&fit=crop" alt="B&W">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="B&W">
+            <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=800&auto=format&fit=crop" alt="B&W">
+        </div>
+    </section>
+
+    <section class="sec-3">
+        <div class="sec-3-left">
+            <h2 class="serif">Echoes of A.I.</h2>
+            <p class="sub">Beauty & Fashion — 07.05.26</p>
+            <br>
+            <div class="sec-3-credits">
+                Visual Director: Jessie<br>
+                Tech: Stable Diffusion / Midjourney<br>
+                Focus: Skin Texture / Light Structuring<br>
+                Brand: Global Aesthetics
+            </div>
+        </div>
+        <div class="sec-3-right">
+            <img src="https://images.unsplash.com/photo-1611558709798-e009c8fd7706?q=80&w=1968&auto=format&fit=crop" alt="Editorial">
+        </div>
+    </section>
+
+    <section class="sec-4">
+        <img class="sec-4-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop" alt="Model Left">
+        <img class="sec-4-img" src="https://images.unsplash.com/photo-1509631179647-0c708bd226e3?q=80&w=1000&auto=format&fit=crop" alt="Model Right">
+        <div class="sec-4-text">JESSIE</div>
+    </section>
+
+    <section class="sec-5">
+        <div class="kinfolk-header serif">Inside The Prompt</div>
+        <div class="grid-4">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <div class="card-meta">Aesthetics, Issue 01</div>
+                <div class="card-title">PURE SKIN</div>
+                <div class="card-desc">Mastering macro photography and extreme skin details in AI generation.</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <div class="card-meta">Portrait, Issue 02</div>
+                <div class="card-title">LIGHT SCULPTING</div>
+                <div class="card-desc">Remaking the studio lighting setup with algorithm commands.</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <div class="card-meta">Fashion, Issue 03</div>
+                <div class="card-title">AVANT-GARDE</div>
+                <div class="card-desc">Exploring the boundary between traditional fashion and virtual fabric.</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1611558709798-e009c8fd7706?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <div class="card-meta">Vibe, Issue 04</div>
+                <div class="card-title">THE MOOD</div>
+                <div class="card-desc">Setting the emotional tone for high-end brand campaigns.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-6">
+        <div class="kinfolk-header serif">The Pet Issue</div>
+        <div class="grid-4">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <div class="card-meta">Pet Care, Vol 1</div>
+                <div class="card-title">DOG LIFE</div>
+                <div class="card-desc">Capturing the lively moments of pets with commercial precision.</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <div class="card-meta">Pet Care, Vol 2</div>
+                <div class="card-title">FELINE GRACE</div>
+                <div class="card-desc">The elegant and quiet nature of cats in studio lighting.</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <div class="card-meta">Product, Vol 3</div>
+                <div class="card-title">STILL LIFE</div>
+                <div class="card-desc">Integrating high-end pet products seamlessly into aesthetic environments.</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <div class="card-meta">Creative, Vol 4</div>
+                <div class="card-title">THE CONCEPT</div>
+                <div class="card-desc">Visualizing global content strategies through AI workflows.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-7">
+        <div class="grid-3">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <br>
+                <div class="card-meta">Vision, Final</div>
+                <div class="card-title">THE DIRECTOR</div>
+                <div class="card-desc">Bridging 8 years of traditional photography with tomorrow's AI engine.</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <br>
+                <div class="card-meta">Process, Final</div>
+                <div class="card-title">THE WORKFLOW</div>
+                <div class="card-desc">Translating brand commercial needs into precise generative algorithms.</div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop" alt="Item">
+                <br>
+                <div class="card-meta">Future, Final</div>
+                <div class="card-title">GLOBAL IMPACT</div>
+                <div class="card-desc">Leading the visual matrix for cross-border markets globally.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>Discover unlimited AI visual creations</div>
+        <div class="footer-links">
+            <span>Login</span>
+            <span style="border: 1px solid #fff; padding: 5px 15px;">Contact Me</span>
+        </div>
+    </footer>
+
+</body>
+</html>
